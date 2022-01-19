@@ -11,6 +11,55 @@ a.	Think about what could be going wrong with our calculation. Think about a bet
 b.	What metric would you report for this dataset?
 c.	What is its value?
 
-Question 2: For this question you’ll need to use SQL. Follow this link to access the data set required for the challenge. Please use queries to answer the following questions. Paste your queries along with your final numerical answers below.
+
+Question 2:
+For this question you’ll need to use SQL. Follow this link to access the data set required for the challenge. Please use queries to answer the following questions. Paste your queries along with your final numerical answers below.
 
 a.	How many orders were shipped by Speedy Express in total?
+
+Answer: 54	
+
+Code Used: 
+SELECT Shippers.ShipperName,COUNT(Orders.OrderID) AS TotalOrders FROM Orders
+LEFT JOIN Shippers ON Orders.ShipperID = Shippers.ShipperID
+GROUP BY ShipperName;
+
+b.	What is the last name of the employee with the most orders?
+
+ANSWER:   PEACOCK,40
+
+
+Code Used:
+
+SELECT  Employees.LastName , COUNT(Orders.OrderID) AS NumberOfOrders FROM Orders
+LEFT JOIN Employees ON Orders.EmployeeID = Employees.EmployeeID
+GROUP BY LastName
+ORDER BY COUNT(Orders.OrderID) DESC;
+
+
+
+c.	What product was ordered the most by customers in Germany?
+ 
+Answer:  PRODUCT NAME: CAMEMBERT PIERROT
+         Quantity - 40 
+         Orders - 300
+	       Total Ordered - 12000
+         
+Code Used: CREATE VIEW Products_Ordered AS
+	         SELECT Orders.OrderID, Customers.Country, OrderDetails.Quantity, Products.ProductName
+	         FROM Orders, OrderDetails
+	         JOIN Customers ON Orders.CustomerID=Customers.CustomerID
+           JOIN Products ON OrderDetails.ProductID=Products.ProductID
+	         WHERE Country='Germany';
+	
+
+	         CREATE VIEW Product_Orders AS
+	         SELECT ProductName, Quantity, COUNT(*) as 'Orders'
+           FROM Products_Ordered
+	         GROUP BY ProductName;
+	
+
+	        SELECT ProductName, Quantity, Orders, (Quantity * Orders) AS TotalOrdered
+	        FROM Product_Orders
+	        ORDER BY TotalOrdered desc
+	        LIMIT 1;
