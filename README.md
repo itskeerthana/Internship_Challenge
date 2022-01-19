@@ -45,21 +45,19 @@ Answer:  PRODUCT NAME: CAMEMBERT PIERROT
          Orders - 300
 	       Total Ordered - 12000
          
-Code Used: CREATE VIEW Products_Ordered AS
-	         SELECT Orders.OrderID, Customers.Country, OrderDetails.Quantity, Products.ProductName
-	         FROM Orders, OrderDetails
-	         JOIN Customers ON Orders.CustomerID=Customers.CustomerID
-           JOIN Products ON OrderDetails.ProductID=Products.ProductID
-	         WHERE Country='Germany';
-	
+Code Used:           CREATE VIEW Product_Ordered AS
+		     SELECT Orders.OrderID, Customers.Country, OrderDetails.Quantity,  Products.ProductName
+		     FROM Orders, OrderDetails
+		     JOIN Customers ON Orders.CustomerID= Customers.CustomerID
+	 	     JOIN Products ON OrderDetails.ProductID=Product.ProductID
+		     WHERE Country=’Germany’;
 
-	         CREATE VIEW Product_Orders AS
-	         SELECT ProductName, Quantity, COUNT(*) as 'Orders'
-           FROM Products_Ordered
-	         GROUP BY ProductName;
-	
-
-	        SELECT ProductName, Quantity, Orders, (Quantity * Orders) AS TotalOrdered
-	        FROM Product_Orders
-	        ORDER BY TotalOrdered desc
-	        LIMIT 1;
+	                     CREATE VIEW Product_Orders AS 
+		     SELECT ProductName, Quantity, COUNT(*) as ‘Orders’
+		     FROM Products_Ordered
+		     GROUP BY ProductName;
+			
+		     SELECT ProductName, Quantity, Orders, (Quantity* Orders) AS TotalOrdered
+		     FROM Product_Orders
+		     ORDER BY TotalOrdered desc
+		     LIMIT 1;
