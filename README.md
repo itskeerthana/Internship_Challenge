@@ -6,10 +6,12 @@ On Shopify, we have exactly 100 sneaker shops, and each of these shops sells onl
 
 a.	Think about what could be going wrong with our calculation. Think about a better way to evaluate this data. 
 
-
+	
 
 b.	What metric would you report for this dataset?
+	
 c.	What is its value?
+        The correct AOV values is $357.92
 
 
 Question 2:
