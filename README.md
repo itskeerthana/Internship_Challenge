@@ -5,19 +5,20 @@ Question 1: Given some sample data, write a program to answer the following: cli
 On Shopify, we have exactly 100 sneaker shops, and each of these shops sells only one model of shoe. We want to do some analysis of the average order value (AOV). When we look at orders data over a 30 day window, we naively calculate an AOV of $3145.13. Given that we know these shops are selling sneakers, a relatively affordable item, something seems wrong with our analysis. 
 
 a.	Think about what could be going wrong with our calculation. Think about a better way to evaluate this data. 
-	Wrong calculation has occured by using count() function instead of sum() function, since count() function only provides total number of rows for items and sum() function provides accurate AOV for the sneakers.
+	ANSWER: Wrong calculation has occurred by using count() function instead of sum() function, since count() function only provides total number of rows for items and   		    sum() function provides accurate AOV for the sneakers.
 	
 
 b.	What metric would you report for this dataset?
-	To calculate the AOV the metrics required are sum of both Order Amount and Total items which are determind by,
+	ANSWER: To calculate the AOV the metrics required are sum of both Order Amount and Total items which are determind by,
 	
-	order_amount = data_df['order_amount'].sum()
-	total_sum = data_df['total_items'].sum() 
-	and then calculating AOV by
-	AOV = order_amount/total_sum
+		order_amount = data_df['order_amount'].sum()
+		total_sum = data_df['total_items'].sum() 
+		and then calculating AOV by
+		AOV = order_amount/total_sum
 	
 c.	What is its value?
-        The correct AOV values is $357.92
+
+        ANSWER: The correct AOV values is $357.92
 
 
 Question 2:
