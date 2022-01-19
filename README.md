@@ -43,7 +43,7 @@ c.	What product was ordered the most by customers in Germany?
 Answer:  PRODUCT NAME: CAMEMBERT PIERROT
          Quantity - 40 
          Orders - 300
-	       Total Ordered - 12000
+	 Total Ordered - 12000
          
 Code Used:           CREATE VIEW Product_Ordered AS
 		     SELECT Orders.OrderID, Customers.Country, OrderDetails.Quantity,  Products.ProductName
